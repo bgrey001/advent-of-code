@@ -16,7 +16,10 @@
 
 using namespace std;
 
-int task1(std::string filename) {
+// pass filename by reference to avoid making copies for each functionc call, this has to be constant as references can't be changed
+inline int task1(const string& filename, bool verbose) {
+
+    log(filename)
 
     map<std::string, int> mapping = {
         {"one", 1},
@@ -31,6 +34,10 @@ int task1(std::string filename) {
     };
 
     std::ifstream f(filename);
+    std::ofstream fs;
+    fs.open("../day1/output.txt");
+
+
     int sum = 0;
     string line;
 
@@ -39,67 +46,86 @@ int task1(std::string filename) {
         return 0;
     }
 
+    int counter = 0;
     while (std::getline(f, line)) {
+
+        if (verbose)
+            log(line);
+
         int n = line.length();
         vector<string> vec;
 
-        int min_idx = INT16_MAX;
-        string min_str;
+        // word search
+        int leftWordIdx = -1;
+        string leftWord;
 
-        int max_idx = 0;
-        string max_str;
+        int rightWordIdx = -1;
+        string rightWord;
 
-        // locate string ints
-        for (const auto &[key, value]: mapping) {
-            int idx1 = line.find_first_of(key);
-            int idx2 = line.find_last_of(key);
-            if (idx1 < min_idx && idx1 != -1) {
-                min_idx = idx1;
-                min_str = key;
-            }
-            if (idx2 > max_idx && idx2 != -1) {
-                max_idx = idx2;
-                max_str = key;
-            }
-        }
+        for (int i = 0, j = n; j >= 0; i++, j--) {
+            string leftSubstr = line.substr(0, i);
+            string rightSubstr = line.substr(j, i);
 
-        log(line);
+            // loop through hashmap, refencing the pointer for each entry
+            for (auto &[key, value]: mapping) {
+                if (verbose)
+                    log("key: " << key << ", value: " << value);
 
-        log(min_str << " " << min_idx);
-        log(max_str << " " << max_idx);
+                // left string search
+                if (leftWordIdx == -1) {
+                    int leftIdx = leftSubstr.find(key);
+                    if (leftIdx != -1) {
+                        leftWordIdx = leftIdx;
+                        leftWord = key;
+                    }
+                }
 
-
-        if (!max_str.empty()) {
-            line.replace(max_idx, max_str.length(), to_string(mapping[max_str]));
-        }
-
-        if (!min_str.empty()) {
-            line.replace(min_idx, min_str.length(), to_string(mapping[min_str]));
-        }
-//        log(max_str);
-//        log(line);
-
-        for (int i = 0; i < n; i++) {
-            int x = (int)line[i] - 48;
-            if (x >= 0 && x < 10) {
-                string s = to_string(x);
-                vec.push_back(s);
+                // right string search
+                if (rightWordIdx == -1) {
+                    int rightIdx = rightSubstr.find(key);
+                    if (rightIdx != -1) {
+                        rightWordIdx = n - rightSubstr.length();
+                        rightWord = key;
+                    }
+                }
             }
         }
 
-        // locate strings
-        int line_code;
-        if (vec.size() == 0) {
-            continue;
+        // replace words with integers now
+        if (!rightWord.empty()) {
+            line.replace(rightWordIdx, rightWord.length(), to_string(mapping[rightWord]));
         }
-        else {
-            line_code = std::stoi(vec[0] + vec.back());
+
+        if (!leftWord.empty() && leftWordIdx != rightWordIdx) {
+            line.replace(leftWordIdx, leftWord.length(), to_string(mapping[leftWord]));
         }
-        log(line_code);
-        vec.clear();
-        sum += line_code;
-        break;
+
+        // integer search
+        int left_int = -1;
+        int right_int = -1;
+
+        // dual pointer loop with extra condition to confirm both of our integers aren't set already
+        for (int i = 0, j = n; j >= 0 && !(left_int != -1 && right_int != -1); i++, j--) {
+            if (verbose)
+                log("i: " << i << ", j: " << j);
+
+            // forward pass to locate first integer
+            int xi = (int)line[i] - 48;
+            if (left_int == -1 && (xi >= 0 && xi < 10))
+                left_int = xi;
+
+            // backward pass to locate last integer
+            int xj = (int)line[j] - 48;
+            if (right_int == -1 && (xj >= 0 && xj < 10))
+                right_int = xj;
+
+        }
+
+        int concat = std::stoi(to_string(left_int) + to_string(right_int));
+        fs << concat << "\n";
+        sum += concat;
+        counter++;
     }
+    fs.close();
     return sum;
 }
-

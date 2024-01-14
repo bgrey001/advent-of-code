@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "advent_of_code::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-advent_of_code-Debug-c98359ad54993dfe653e.json",
+					"jsonFile" : "target-advent_of_code-Debug-665c90f8c4c76413dae8.json",
 					"name" : "advent_of_code",
 					"projectIndex" : 0
 				}
@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/bpg23/Documents/GitHub/advent-of-code/cmake-build-debug",
-		"source" : "/Users/bpg23/Documents/GitHub/advent-of-code"
+		"build" : "/home/benedict/Documents/GitHub/advent-of-code/cmake-build-debug",
+		"source" : "/home/benedict/Documents/GitHub/advent-of-code"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 5
+		"minor" : 6
 	}
 }

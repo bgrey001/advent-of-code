@@ -7,4 +7,6 @@ include_directories(day1)
 
 add_executable(advent_of_code
         day1/task1.h
-        main.cpp)
+        main.cpp
+        day2/task2.h
+        day3/task3.h)
