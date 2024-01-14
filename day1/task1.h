@@ -12,14 +12,14 @@
 #include <map>
 #include <tuple>
 
-#define log(x) std::cout << x << std::endl;
+#define LOG(x) std::cout << x << std::endl;
 
 using namespace std;
 
 // pass filename by reference to avoid making copies for each functionc call, this has to be constant as references can't be changed
 inline int task1(const string& filename, bool verbose) {
 
-    log(filename)
+    LOG(filename)
 
     map<std::string, int> mapping = {
         {"one", 1},
@@ -42,7 +42,7 @@ inline int task1(const string& filename, bool verbose) {
     string line;
 
     if ((bool)f == 0) {
-        log("Not working");
+        LOG("Not working");
         return 0;
     }
 
@@ -50,7 +50,7 @@ inline int task1(const string& filename, bool verbose) {
     while (std::getline(f, line)) {
 
         if (verbose)
-            log(line);
+            LOG(line);
 
         int n = line.length();
         vector<string> vec;
@@ -69,7 +69,7 @@ inline int task1(const string& filename, bool verbose) {
             // loop through hashmap, refencing the pointer for each entry
             for (auto &[key, value]: mapping) {
                 if (verbose)
-                    log("key: " << key << ", value: " << value);
+                    LOG("key: " << key << ", value: " << value);
 
                 // left string search
                 if (leftWordIdx == -1) {
@@ -107,7 +107,7 @@ inline int task1(const string& filename, bool verbose) {
         // dual pointer loop with extra condition to confirm both of our integers aren't set already
         for (int i = 0, j = n; j >= 0 && !(left_int != -1 && right_int != -1); i++, j--) {
             if (verbose)
-                log("i: " << i << ", j: " << j);
+                LOG("i: " << i << ", j: " << j);
 
             // forward pass to locate first integer
             int xi = (int)line[i] - 48;

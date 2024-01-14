@@ -9,7 +9,7 @@
 #include <fstream>
 #include <map>
 
-#define log(x) std::cout << x << std::endl;
+#define LOG(x) std::cout << x << std::endl;
 
 using namespace std;
 
@@ -22,7 +22,7 @@ inline int task2(const string& filename, bool verbose) {
 
 
     if ((bool)f == 0) {
-        log("Stream error.");
+        LOG("Stream error.");
         return 0;
     }
 
@@ -100,7 +100,7 @@ inline int task2(const string& filename, bool verbose) {
 
         gameNumber++;
         power += (maxRed * maxGreen * maxBlue);
-        log("power = " << power)
+        LOG("power = " << power)
 
     }
 

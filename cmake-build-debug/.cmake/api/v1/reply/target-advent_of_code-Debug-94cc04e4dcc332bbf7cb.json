@@ -98,7 +98,8 @@
 			[
 				0,
 				2,
-				3
+				3,
+				4
 			]
 		},
 		{
@@ -130,6 +131,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "day3/task3.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "day4/task4.h",
 			"sourceGroupIndex" : 0
 		}
 	],

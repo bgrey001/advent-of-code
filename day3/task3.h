@@ -10,7 +10,7 @@
 #include <vector>
 #include <map>
 
-#define log(x) std::cout << x << std::endl;
+#define LOG(x) std::cout << x << std::endl;
 
 using namespace std;
 
@@ -120,7 +120,7 @@ inline int task3part1(const string& filename, bool verbose) {
     string line;
 
     if (!f.is_open()) {
-        log("Read error, please check path.");
+        LOG("Read error, please check path.");
         return total;
     }
 
@@ -134,7 +134,7 @@ inline int task3part1(const string& filename, bool verbose) {
     // populate matrix
     while (getline(f, line)) {
         if (verbose)
-            log(line);
+            LOG(line);
 
         for (int j = 0; j < line.length(); j++) {
             char c = line[j];
@@ -156,7 +156,7 @@ inline int task3part1(const string& filename, bool verbose) {
     unsigned int n = mat[0].size();
 
     if (verbose) {
-        log("Matrix:");
+        LOG("Matrix:");
         logMatrix(mat, m, n);
     }
 
@@ -216,7 +216,7 @@ inline int task3(const string& filename, bool verbose) {
     string line;
 
     if (!f.is_open()) {
-        log("Read error, please check path.");
+        LOG("Read error, please check path.");
         return total;
     }
 
@@ -230,7 +230,7 @@ inline int task3(const string& filename, bool verbose) {
     // populate matrix
     while (getline(f, line)) {
         if (verbose)
-            log(line);
+            LOG(line);
 
         for (int j = 0; j < line.length(); j++) {
             char c = line[j];
@@ -294,7 +294,7 @@ inline int task3(const string& filename, bool verbose) {
     }
 
     if (verbose) {
-        log("Matrix:");
+        LOG("Matrix:");
         logMatrix(mat, m, n);
     }
     return total;
