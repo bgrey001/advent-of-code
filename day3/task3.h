@@ -285,7 +285,7 @@ inline int task3(const string& filename, bool verbose) {
 
     // traverse map to locate coords with two numbers and calculate their product
 
-    for (auto& [coords, numVec]: adjMap) {
+    for (auto &[coords, numVec]: adjMap) {
         // log("key: " << key << ", value: " << value[0] << ", " << value[1]);
         if (numVec.size() == 2) {
             total += numVec[0] * numVec[1];

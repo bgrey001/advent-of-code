@@ -8,6 +8,7 @@
 #include "day2/task2.h"
 #include "day3/task3.h"
 #include "day4/task4.h"
+#include "day5/task5.h"
 
 
 #define LOG(x) std::cout << x << std::endl;
@@ -18,7 +19,7 @@ int main(int argc, char* argv[]) {
     // int idx = s.find_last_of("eight");
     // log(idx);
 
-    int code = task4("../day4/input.txt", false);
+    int code = task5("../day5/input.txt", false);
     LOG("Final code: " << code);  // answer for test is 6756
     return 0;
 }

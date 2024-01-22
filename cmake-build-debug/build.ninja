@@ -51,10 +51,17 @@ build cmake_object_order_depends_target_advent_of_code: phony || CMakeFiles/adve
 
 build CMakeFiles/advent_of_code.dir/main.cpp.o: CXX_COMPILER__advent_of_code_unscanned_Debug /home/benedict/Documents/GitHub/advent-of-code/main.cpp || cmake_object_order_depends_target_advent_of_code
   DEP_FILE = CMakeFiles/advent_of_code.dir/main.cpp.o.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -I/home/benedict/Documents/GitHub/advent-of-code/day1
   OBJECT_DIR = CMakeFiles/advent_of_code.dir
   OBJECT_FILE_DIR = CMakeFiles/advent_of_code.dir
+
+build CMakeFiles/advent_of_code.dir/day5/task5.cpp.o: CXX_COMPILER__advent_of_code_unscanned_Debug /home/benedict/Documents/GitHub/advent-of-code/day5/task5.cpp || cmake_object_order_depends_target_advent_of_code
+  DEP_FILE = CMakeFiles/advent_of_code.dir/day5/task5.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -I/home/benedict/Documents/GitHub/advent-of-code/day1
+  OBJECT_DIR = CMakeFiles/advent_of_code.dir
+  OBJECT_FILE_DIR = CMakeFiles/advent_of_code.dir/day5
 
 
 # =============================================================================
@@ -64,7 +71,7 @@ build CMakeFiles/advent_of_code.dir/main.cpp.o: CXX_COMPILER__advent_of_code_uns
 #############################################
 # Link the executable advent_of_code
 
-build advent_of_code: CXX_EXECUTABLE_LINKER__advent_of_code_Debug CMakeFiles/advent_of_code.dir/main.cpp.o
+build advent_of_code: CXX_EXECUTABLE_LINKER__advent_of_code_Debug CMakeFiles/advent_of_code.dir/main.cpp.o CMakeFiles/advent_of_code.dir/day5/task5.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/advent_of_code.dir
   POST_BUILD = :
